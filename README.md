@@ -1,16 +1,17 @@
-# DTXSocketConnection
+# LNSocketConnection
+
 A simple socket connection framework for two–way peer–to–peer communication.
 
 The framework is intended to be used in conjunction with [`NSNetService`](https://developer.apple.com/documentation/foundation/nsnetservice?language=objc) and [`NSNetServiceBrowser`](https://developer.apple.com/documentation/foundation/nsnetservicebrowser?language=objc) to create communication between two peers.
 
 ### Using
 
-Add `DTXSocketConnection.xcodeproj` to your project. In your target's settings, add `DTXSocketConnection ` to embedded binaries.
+Add `LNSocketConnection.xcodeproj` to your project. In your target's settings, add `LNSocketConnection.framework ` to embedded binaries.
 
 Import the framework's umbrella header:
 
 ```objc
-#import <DTXSocketConnection/DTXSocketConnection.h>
+#import <LNSocketConnection/LNSocketConnection.h>
 ```
 
 #### Opening Connection
@@ -20,7 +21,7 @@ Import the framework's umbrella header:
 ```objc
 - (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
 {
-	_socketConnection = [[DTXSocketConnection alloc] initWithInputStream:inputStream outputStream:outputStream queue:_socketQueue];
+	_socketConnection = [[LNSocketConnection alloc] initWithInputStream:inputStream outputStream:outputStream queue:_socketQueue];
 	_socketConnection.delegate = self;
 	[_socketConnection open];
 }
@@ -31,7 +32,7 @@ Import the framework's umbrella header:
 ```objc
 - (void)netServiceDidResolveAddress:(NSNetService *)sender
 {
-	_socketConnection = [[DTXSocketConnection alloc] initWithHostName:sender.hostName port:sender.port queue:_socketQueue];
+	_socketConnection = [[LNSocketConnection alloc] initWithHostName:sender.hostName port:sender.port queue:_socketQueue];
 	_socketConnection.delegate = self;
 	[_socketConnection open];
 }
@@ -68,3 +69,6 @@ NSData* data = [str dataUsingEncoding:NSUTF8StringEncoding];
 
 ```
 
+#### Acknowledgements
+
+Originally developed by me for Wix.

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "393CB0CF24C4C3A300BDBDA9"
-               BuildableName = "DTXSocketConnection.framework"
-               BlueprintName = "DTXSocketConnectionStatic"
-               ReferencedContainer = "container:DTXSocketConnection.xcodeproj">
+               BuildableName = "LNSocketConnection.framework"
+               BlueprintName = "LNSocketConnectionStatic"
+               ReferencedContainer = "container:LNSocketConnection.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "393CB0CF24C4C3A300BDBDA9"
-            BuildableName = "DTXSocketConnection.framework"
-            BlueprintName = "DTXSocketConnectionStatic"
-            ReferencedContainer = "container:DTXSocketConnection.xcodeproj">
+            BuildableName = "LNSocketConnection.framework"
+            BlueprintName = "LNSocketConnectionStatic"
+            ReferencedContainer = "container:LNSocketConnection.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -1,25 +1,25 @@
 //
-//  DTXSocketConnection.m
-//  DTXSocketConnection
+//  LNSocketConnection.m
+//  LNSocketConnection
 //
-//  Created by Leo Natan (Wix) on 18/07/2017.
-//  Copyright © 2017 LeoNatan. All rights reserved.
+//  Created by Leo Natan on 18/07/2017.
+//  Copyright © 2017-2021 Leo Natan. All rights reserved.
 //
 
-#import "DTXSocketConnection.h"
+#import "LNSocketConnection.h"
 
 #if ! defined(__cplusplus) && ! defined(auto)
 #define auto __auto_type
 #endif
 
-@interface DTXSocketConnection () <NSStreamDelegate>
+@interface LNSocketConnection () <NSStreamDelegate>
 
 @end
 
 #if defined(__IPHONE_14_0) || defined(__MAC_10_16) || defined(__TVOS_14_0) || defined(__WATCHOS_7_0)
 __attribute__((objc_direct_members))
 #endif
-@implementation DTXSocketConnection
+@implementation LNSocketConnection
 {
 	NSInputStream* _inputStream;
 	NSOutputStream* _outputStream;
@@ -45,7 +45,7 @@ __attribute__((objc_direct_members))
 
 - (void)_setupQueuesWithDelegateQueue:(dispatch_queue_t)delegateQueue
 {
-	_workQueue = dispatch_queue_create("com.wix.DTXSocketConnectionQueue", dispatch_queue_attr_make_with_autorelease_frequency(DISPATCH_QUEUE_SERIAL, DISPATCH_AUTORELEASE_FREQUENCY_WORK_ITEM));
+	_workQueue = dispatch_queue_create("com.LeoNatan.LNSocketConnectionQueue", dispatch_queue_attr_make_with_autorelease_frequency(DISPATCH_QUEUE_SERIAL, DISPATCH_AUTORELEASE_FREQUENCY_WORK_ITEM));
 	_delegateQueue = delegateQueue ?: _workQueue;
 }
 
@@ -261,7 +261,7 @@ __attribute__((objc_direct_members))
 	if(_inputStream.streamStatus == NSStreamStatusClosed || _inputPendingClose)
 	{
 		dispatch_async(_delegateQueue, ^{
-			request(nil, [NSError errorWithDomain:@"DTXSocketConnectionErrorDomain" code:10 userInfo:@{NSLocalizedDescriptionKey: @"Reading is closed."}]);
+			request(nil, [NSError errorWithDomain:@"LNSocketConnectionErrorDomain" code:10 userInfo:@{NSLocalizedDescriptionKey: @"Reading is closed."}]);
 		});
 		return;
 	}
@@ -417,7 +417,7 @@ __attribute__((objc_direct_members))
 	if(_outputStream.streamStatus == NSStreamStatusClosed || _outputPendingClose)
 	{
 		dispatch_async(_delegateQueue, ^{
-			request([NSError errorWithDomain:@"DTXSocketConnectionErrorDomain" code:10 userInfo:@{NSLocalizedDescriptionKey: @"Writing is closed."}]);
+			request([NSError errorWithDomain:@"LNSocketConnectionErrorDomain" code:10 userInfo:@{NSLocalizedDescriptionKey: @"Writing is closed."}]);
 		});
 		return;
 	}
@@ -613,7 +613,7 @@ __attribute__((objc_direct_members))
 
 @end
 
-@implementation DTXSocketConnection (Deprecated)
+@implementation LNSocketConnection (Deprecated)
 
 - (instancetype)initWithInputStream:(NSInputStream*)inputStream outputStream:(NSOutputStream*)outputStream queue:(nullable dispatch_queue_t)queue
 {

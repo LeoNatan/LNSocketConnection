@@ -1,18 +1,18 @@
 //
-//  DTXSocketConnection.h
-//  DTXSocketConnection
+//  LNSocketConnection.h
+//  LNSocketConnection
 //
-//  Created by Leo Natan (Wix) on 18/07/2017.
-//  Copyright © 2017 LeoNatan. All rights reserved.
+//  Created by Leo Natan on 18/07/2017.
+//  Copyright © 2017-2021 Leo Natan. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class DTXSocketConnection;
+@class LNSocketConnection;
 
-@protocol DTXSocketConnectionDelegate <NSObject>
+@protocol LNSocketConnectionDelegate <NSObject>
 
 @optional
 
@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param socketConnection The socket connection that closed reads.
  */
-- (void)readClosedForSocketConnection:(DTXSocketConnection*)socketConnection;
+- (void)readClosedForSocketConnection:(LNSocketConnection*)socketConnection;
 /**
  * Tells the delegate that the write side of the underlying socket has been closed.
  *
@@ -31,11 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param socketConnection The socket connection that closed writes.
  */
-- (void)writeClosedForSocketConnection:(DTXSocketConnection*)socketConnection;
+- (void)writeClosedForSocketConnection:(LNSocketConnection*)socketConnection;
 
 @end
 
-@interface DTXSocketConnection : NSObject
+@interface LNSocketConnection : NSObject
 
 /**
  * Creates a bidirectional TCP/IP connection using the provided input and output streams.
@@ -79,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * The connection delegate.
  */
-@property (nonatomic, nullable, weak) id<DTXSocketConnectionDelegate> delegate;
+@property (nonatomic, nullable, weak) id<LNSocketConnectionDelegate> delegate;
 
 /**
  * Opens the connection's read and write streams.
@@ -121,7 +121,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface DTXSocketConnection (Deprecated)
+@interface LNSocketConnection (Deprecated)
 
 /**
  * Creates a bidirectional TCP/IP connection using the provided input and output streams.
